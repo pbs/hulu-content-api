@@ -1,7 +1,8 @@
 import os 
 from flask import Flask, request
-from flask_restful import Resource, Api
+from flask_restful import Api
 from flask_jwt_extended import JWTManager
+from dotenv import load_dotenv
 
 from config.logger import configure_logger
 from routes.hello_world import HelloWorld
@@ -10,6 +11,7 @@ from routes.content_portal import ContentPortal
 
 
 ## ------ BASIC CONFIG ------ ##
+load_dotenv()
 
 # define app and api 
 app = Flask(__name__)

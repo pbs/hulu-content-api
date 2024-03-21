@@ -2,8 +2,12 @@ from flask import request
 from flask_restful import Resource
 from flask_jwt_extended import create_access_token
 import os 
+from dotenv import load_dotenv
 
 from utils.dynamodb_client import DynamoDBClient
+
+# load dotenv 
+load_dotenv()
 
 class Authenticate(Resource):
     def post(self):
@@ -21,7 +25,7 @@ class Authenticate(Resource):
         # instantiate dynamodb client 
         dynamodb = DynamoDBClient(
             aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-            aws_secret_acceess_key=os.getenv("AWS_SECRET_ACCESS_KEY")
+            aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY")
         )
 
         # validate credentails 

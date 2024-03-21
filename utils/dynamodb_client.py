@@ -1,14 +1,12 @@
 import boto3
+import os
 
 class DynamoDBClient:
-    def __init__(self, aws_access_key_id, aws_secret_acceess_key):
-        self.aws_access_key_id = aws_access_key_id
-        self.aws_secret_acceess_key = aws_secret_acceess_key
+    def __init__(self, aws_access_key_id, aws_secret_access_key):
         self.client = boto3.resource("dynamodb", 
-                                     aws_access_key_id=self.aws_access_key_id,
-                                     aws_secret_acceess_key=self.aws_secret_acceess_key,
-                                     region_name="us-east-1"
-                                     )
+                                     aws_access_key_id=aws_access_key_id,
+                                     aws_secret_access_key=aws_secret_access_key,
+                                     region_name="us-east-1")
     
     def validate_user(self, username, password):
         # connect to table

@@ -2,9 +2,12 @@ from flask_restful import Resource, reqparse
 from flask_jwt_extended import get_jwt_identity, verify_jwt_in_request
 from jwt.exceptions import InvalidTokenError
 import os 
+from dotenv import load_dotenv
 
 from config.parser import configure_parser
 from utils.hulu_content_portal_client import HuluContentClient
+
+load_dotenv()
 
 class ContentPortal(Resource):
     def post(self):
@@ -27,7 +30,7 @@ class ContentPortal(Resource):
                 # login 
                 hulu.login(
                     email=os.getenv("HULU_CONTENT_USERNAME"),
-                    password=os.getent("HULU_CONTENT_PASSWORD")
+                    password=os.getenv("HULU_CONTENT_PASSWORD")
                 )
                 # generate report 
                 hulu.get_metrics(**args)
