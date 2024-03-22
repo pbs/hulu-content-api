@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install system dependencies required for Chrome
 RUN apt-get update \
-    && apt-get install -y wget unzip \
+    && apt-get install -y wget unzip libglib2.0-0 libnss3 libxcb1-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Download and install Chrome
