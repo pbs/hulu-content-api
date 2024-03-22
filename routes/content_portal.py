@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from config.parser import configure_parser
 from utils.hulu_content_portal_client import HuluContentClient
 
+# load dotenv 
 load_dotenv()
 
 class ContentPortal(Resource):
@@ -25,7 +26,8 @@ class ContentPortal(Resource):
             try:
                 # instantiate client 
                 hulu = HuluContentClient(
-                    executable_path="/opt/homebrew/bin/chromedriver"
+                    # executable_path="/opt/homebrew/bin/chromedriver" ## SM: local path
+                    executable_path="/usr/local/bin/chromedriver-linux64/chromedriver" ## SM: still not working on docker image
                 )
                 # login 
                 hulu.login(

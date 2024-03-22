@@ -36,7 +36,7 @@ class HuluContentClient:
         try:
             service = Service(self.executable_path)
             options = webdriver.ChromeOptions()
-            # options.add_argument("--headless") ## SM: opens browser silently, uncomment after testing is complete
+            options.add_argument("--headless") ## SM: opens browser silently, uncomment after testing is complete
             options.add_argument("--disable-logging")
             self.driver = webdriver.Chrome(service=service,
                                            options=options)
