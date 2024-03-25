@@ -38,6 +38,7 @@ class HuluContentClient:
             options = webdriver.ChromeOptions()
             options.add_argument("--headless") ## SM: opens browser silently, uncomment after testing is complete
             options.add_argument("--disable-logging")
+            options.add_argument("--remote-debugging-port=9222")
             self.driver = webdriver.Chrome(service=service,
                                            options=options)
         except Exception as e:

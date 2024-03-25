@@ -27,7 +27,8 @@ class ContentPortal(Resource):
                 # instantiate client 
                 hulu = HuluContentClient(
                     # executable_path="/opt/homebrew/bin/chromedriver" ## SM: local path
-                    executable_path="/usr/local/bin/chromedriver-linux64/chromedriver" ## SM: still not working on docker image
+                    # executable_path="/usr/local/bin/chromedriver-linux64/chromedriver" ## SM: still not working on docker image
+                    executable_path="/usr/bin/chromedriver"
                 )
                 # login 
                 hulu.login(

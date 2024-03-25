@@ -57,7 +57,6 @@ api.add_resource(Authenticate, "/authenticate")
 api.add_resource(ContentPortal, "/content_portal")
 
 
-
 ## ------ RUN APPLICATION ------ ##
 if __name__ == "__main__":
     app.run(host="0.0.0.0",
