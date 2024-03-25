@@ -35,7 +35,9 @@ class HuluContentClient:
     def create_driver(self, headless=True):
         try:
             service = Service(self.executable_path)
+            service.start()
             options = webdriver.ChromeOptions()
+            options.add_argument("--no-sandbox)")
             options.add_argument("--headless") ## SM: opens browser silently, uncomment after testing is complete
             options.add_argument("--disable-logging")
             options.add_argument("--remote-debugging-port=9222")
