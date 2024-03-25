@@ -51,3 +51,70 @@ cd hulu-content-api
  ```
 
  Your API is now up and running on the specified port.
+
+ ## Making Requests
+
+### `GET /`
+
+Submit a GET request to this base endpoint to verify the API is up and running
+
+```
+curl http://localhost:8080/
+```
+
+### `POST /authenticate`
+
+Submit a POST request to the authenticate endpoint to retrieve a signed API token. 
+
+### `POST /content_portal`
+
+Submit a POST request to the content portal endpoint to generate a Hulu Content report. 
+
+The following headers are required for this protected endpoint:
+```
+{
+    "Content-Type": "application/json,
+    "Authorization": f"Bearer {your_api_token}
+}
+```
+
+Sample API request 
+
+```
+# retrieve an API token 
+response = requests.post(
+    url = "http://localhost:8080/authenticate
+    json = {
+        username = "YOUR_API_USERNAME",
+        password = "YOUR_API_PASSWORD"
+    }
+)
+
+api_token = response.json()["payload"]
+
+# set report parameters
+report_params = {
+    "metric": METRIC,
+    "content_partner": CONTENT_PARTNER,
+    "series_movie": SERIES_MOVIE,
+    "season": SEASON,
+    "package": PACKAGE,
+    "playback_type": PLAYBACK_TYPE,
+    "time_increment": TIME_INCREMENT,
+    "start_date": START_DATE,
+    "end_date": END_DATE
+}
+
+# set headers 
+headers = {
+    "Content-Type": "application/json,
+    "Authorization": f"Bearer {your_api_token}
+}
+
+# make request 
+response = requests.post(
+    url="https://localhost:8080/content_portal,
+    headers=headers,
+    json=report_params
+)
+```
